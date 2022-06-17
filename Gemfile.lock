@@ -2,11 +2,13 @@ GEM
   remote: https://rubygems.org/
   specs:
     coderay (1.0.9)
+    concurrent-ruby (1.1.9)
     domain_name (0.5.7)
       unf (~> 0.0.3)
     faker (1.1.2)
       i18n (~> 0.5)
-    i18n (0.6.3)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     mechanize (2.5.1)
       domain_name (~> 0.5, >= 0.5.1)
       mime-types (~> 1.17, >= 1.17.2)
