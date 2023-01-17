@@ -153,6 +153,7 @@ class Tourist
   end
 
   def process_request(verb, url, params, headers)
+    headers[:'X-ATS-Debug'] = ""
     webrat_session.send(:process_request, verb, url, params, headers).tap do |response|
       if @@verbose && response['Content-Type'] =~ %r{application/json}
         log("response_json: #{response_body}")
