@@ -153,9 +153,22 @@ class Tourist
   end
 
   def process_request(verb, url, params, headers)
-    webrat_session.send(:process_request, verb, url, params, headers).tap do |response|
-      if @@verbose && response['Content-Type'] =~ %r{application/json}
-        log("response_json: #{response_body}")
+    retry_count = 0
+    retry_max = 3
+    while retry_count < retry_max
+      webrat_session.send(:process_request, verb, url, params, headers).tap do |response|
+        if @@verbose && response['Content-Type'] =~ %r{application/json}
+          log "response_json: #{response_body}"
+        end
+        if [404, 502].include? response.code.to_i
+          retry_count += 1
+          log response_body
+          log "Retry count increased. Total count: #{retry_count}."
+          sleep rand(1..3)
+        else
+          log "Retry not needed."
+          retry_count = retry_max
+        end
       end
     end
   end
@@ -177,7 +190,7 @@ class Tourist
   end
 
   def log(message)
-    # puts "#{Time.now.strftime('%F %H:%M:%S')} Tourist ##{@tourist_id}: (#{@current_tour}) #{message}"
+    puts "#{Time.now.strftime('%F %H:%M:%S')} Tourist ##{@tourist_id}: (#{@current_tour}) #{message}"
   end
 
 end
