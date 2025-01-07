@@ -6,7 +6,6 @@ spec = Gem::Specification.new do |s|
   s.email = "github@shinybit.com"
   s.homepage = "http://github.com/dbrady/tourbus/"
   s.description = "TourBus, a web load-testing tool that combines complex 'tour' definitions with scalable, concurrent testing"
-  s.has_rdoc = true
   s.rdoc_options = ["--line-numbers", "--inline-source", "--main", "README.rdoc", "--title", "Tourbus - Web Load Testing in Ruby"]
   s.executables = ["tourbus", "tourwatch", "tourproxy"]
   s.extra_rdoc_files = ["README.rdoc", "MIT-LICENSE", "examples/contact_app/README.rdoc"]
