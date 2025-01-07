@@ -39,7 +39,7 @@ class Guide
       begin
         tourist.run_tour tour
         tour_data[:status] = "success"
-      rescue MiniTest::Assertion, TourBusException, WebratError => e
+      rescue Minitest::Assertion, TourBusException, WebratError => e
 # binding.pry
         log("********** FAILURE IN RUN! **********")
         log(e.message)
@@ -53,9 +53,13 @@ class Guide
         tourist_data[:exception] = e
       rescue Exception => e
 # binding.pry
+        if e.is_a?(Mechanize::ResponseCodeError) && e.response_code == '429'
+          log("*********** RATE LIMITING IN EFFECT! ***********")
+        end
         log("*********** ERROR IN RUN! ***********")
         log e.message
         if e.respond_to?(:page)
+          puts "Response: #{e.page.body}"
           log "Response: #{e.page.body}"
         end
         e.backtrace.each do |trace|

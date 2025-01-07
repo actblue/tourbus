@@ -28,7 +28,7 @@ opts = Optimist.options do
 end
 
 # config file wins
-config_file = [opts[:touristsdir] + '/tourbus.yml', "./tourbus.yml", "./tourists/tourbus.yml", "./config/tourbus.yml", "~/tourbus.yml"].map {|p| File.expand_path(p)}.find {|p| File.exists? p}
+config_file = [opts[:touristsdir] + '/tourbus.yml', "./tourbus.yml", "./tourists/tourbus.yml", "./config/tourbus.yml", "~/tourbus.yml"].map {|p| File.expand_path(p)}.find {|p| File.exist? p}
 file_config = config_file ? YAML::load_file(config_file).symbolize_keys : {}
 
 config_map = { :host => :to_s, :concurrency => :to_i, :number => :to_i, :rand => :to_i, :tours => :to_s }
