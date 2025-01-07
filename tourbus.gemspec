@@ -13,7 +13,6 @@ spec = Gem::Specification.new do |s|
   s.add_dependency('mechanize', '>= 1.0.0')
   s.add_dependency('optimist')
   s.add_dependency('faker')
-  s.add_dependency('hpricot')
   s.add_dependency('webrat', '>= 0.7.0')
   s.add_dependency('pry')
   s.add_dependency('activesupport')
