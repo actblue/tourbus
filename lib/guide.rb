@@ -39,7 +39,7 @@ class Guide
       begin
         tourist.run_tour tour
         tour_data[:status] = "success"
-      rescue MiniTest::Assertion, TourBusException, WebratError => e
+      rescue Minitest::Assertion, TourBusException, WebratError => e
 # binding.pry
         log("********** FAILURE IN RUN! **********")
         log(e.message)

@@ -47,7 +47,7 @@ class Tourist
 
   def self.configuration
     @configuration ||= begin
-      config_file = @@tourists_file_search.map {|p| File.expand_path(p)}.find {|p| File.exists? p}
+      config_file = @@tourists_file_search.map {|p| File.expand_path(p)}.find {|p| File.exist? p}
       config_file ? YAML::load_file(config_file).symbolize_keys : {}
     end
   end
