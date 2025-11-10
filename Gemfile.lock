@@ -6,7 +6,7 @@ GEM
       unf (~> 0.0.3)
     faker (1.1.2)
       i18n (~> 0.5)
-    i18n (0.6.3)
+    i18n (0.8.0)
     mechanize (2.5.1)
       domain_name (~> 0.5, >= 0.5.1)
       mime-types (~> 1.17, >= 1.17.2)
